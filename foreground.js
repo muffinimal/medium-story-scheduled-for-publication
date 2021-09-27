@@ -30,6 +30,15 @@ function checkSchedule() {
         let publishDate = new Date(publishDateUnix).toLocaleDateString();
 
         console.log(publishDate);
+
+        // let articleSection = document.querySelectorAll('//main');
+        let articleSection = document.body.querySelector('[role="main"]');
+        let scheduledDiv = document.createElement('div');
+
+        scheduledDiv.innerHTML = '<div><h1>scheduled</h1></div>'
+        articleSection.prepend(scheduledDiv);
+        
+        //*[@id="editor_7"]/section
     }
 }
 function extractCData(data) {
