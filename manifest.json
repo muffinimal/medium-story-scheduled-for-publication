@@ -9,6 +9,7 @@
         "128": "logo/logo-128.png"
     },
     // TODO: create a link to other extension
+    // TODO: add CSS
     "options_page": "settings/settings.html",
     "action": {
         "default_title": "Medium Scheduled publications",
@@ -27,6 +28,9 @@
         "matches": [
             "https://*.medium.com/*",
             "https://medium.com/*"
+        ],
+        "css": [
+            "css/scheduled.css"
         ]
     }]
 }
