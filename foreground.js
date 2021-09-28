@@ -31,6 +31,7 @@ window.addEventListener('load', (event) => {
     console.log("waiting for page to fully load");
     //setTimeout(checkSchedule(), 500);
     checkSchedule();
+    getReviewStatus(data);
 });
 
 function checkSchedule() {
@@ -39,8 +40,6 @@ function checkSchedule() {
 
         publishDate = getDateTimeSchedule();
         createHTML(publishDate);
-
-        getPublication();
     } else {
         console.log("Story not scheduled for publication.");
     }
@@ -54,32 +53,14 @@ function getDateTimeSchedule(datetime) {
     return [publishDate, publishTime];
 }
 
-function getPublication() {
-    //"homeCollectionId": "2cef85d78a7f", --> 10 in 10. Should test while in Dev|Fiant
-    /*     "homeCollection": {
-            "id": "2cef85d78a7f",
-            "name": "10 in 10 Challenge",
-            "slug": "10-in-10-challenge",
-            "tags": [
-              "WRITING",
-              "CHALLENGE",
-              "LEARN",
-              "STORIES",
-              "FUN"
-            ], */
-    // let publicationId = data[homeCollectionId];
-    //console.log(publicationId);
-
-    let collectionObj = data.references.Collection;
-    let collection = Object.entries(collectionObj).map(([key, value]) => ({ key, ...value }));
-
-    console.info(collection);
-    console.log(collection[0].name);
-}
-
-function getReviewStatus() {
+function getReviewStatus(data) {
     /*     "virtuals": {
             "statusForCollection": "PENDING", */
+    let status = data.value.virtuals.statusForCollection;
+    console.log(status);
+    // PENDING = wacht op publicatiedatum;
+    // bestaat niet als hij niet gescheduled is
+    // en dan bestaat scheduledPublishAt ook niet
 }
 
 
