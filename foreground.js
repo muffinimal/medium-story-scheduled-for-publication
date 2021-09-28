@@ -1,12 +1,27 @@
+/**
+ * TODO: alleen doen 
+ *    ! als story daadwerkelijk gesubmit is naar een publication
+ *    ? OF als je zelf hebt gescheduled
+ *    ! const van scriptdata naar listener verplaatsen;
+ */
+
 const scriptdata = document.evaluate("/html/body/script[contains(., 'scheduledPublishAt')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
 
-console.log("This prints to the console of the page (injected only if the page url matched)")
+function extractCData(data) {
+    let cdata = data.singleNodeValue.innerText.slice(31);
+    cdata = cdata.substr(0, cdata.length - 8);
+
+    return cdata;
+}
 
 // let first wait for the page to fully load
-
+/**
+ * TODO: wachttijd is niet nodig, gewoon wachten op ful page load
+ */
 window.addEventListener('load', (event) => {
     console.log("waiting");
-    setTimeout(checkSchedule(), 500);
+    //setTimeout(checkSchedule(), 500);
+    checkSchedule();
 });
 
 function checkSchedule() {
@@ -18,15 +33,22 @@ function checkSchedule() {
     } else {
         console.log("Story scheduled for publication");
 
-        let publishDateUnix = data["scheduledPublishAt"];
-        let publishDate = new Date(publishDateUnix).toLocaleDateString();
-        let publishTime = new Date(publishDateUnix).toLocaleTimeString();
+        publishDate = getDateTimeSchedule();
 
         console.log(publishDate);
 
-        createHTML(publishDate, publishTime);
+        createHTML(publishDate);
     }
 }
+
+function getDateTimeSchedule( datetime ) {
+    let publishDateUnix = data["scheduledPublishAt"];
+    let publishDate = new Date(publishDateUnix).toLocaleDateString();
+    let publishTime = new Date(publishDateUnix).toLocaleTimeString();
+
+    return [publishDate, publishTime];
+}
+
 
 function getdata(){
     if( scriptdata.singleNodeValue == null ) {
@@ -35,33 +57,34 @@ function getdata(){
         let cdata = extractCData(scriptdata);
         return JSON.parse(cdata);
     }
-
 }
 
 function getPublication() {
     //"homeCollectionId": "2cef85d78a7f", --> 10 in 10. Should test while in Dev|Fiant
+/*     "homeCollection": {
+        "id": "2cef85d78a7f",
+        "name": "10 in 10 Challenge",
+        "slug": "10-in-10-challenge",
+        "tags": [
+          "WRITING",
+          "CHALLENGE",
+          "LEARN",
+          "STORIES",
+          "FUN"
+        ], */
+    publicationId = data[homeCollectionId];
+    console.log( publicationId );
 
 }
 
-/**
- * 
- * Butter-bar message 
- * <div class="butterBar" data-action-scope="_actionscope_1">
- *      <div class="butterBar-message">
- *          Your story is scheduled to publish on Thursday, Oct 7 at 4:50pm.
- *      </div>
- * </div>} 
- * @returns 
- */
-
-function extractCData(data) {
-    let cdata = data.singleNodeValue.innerText.slice(31);
-    cdata = cdata.substr(0, cdata.length - 8);
-
-    return cdata;
+function getReviewStatus() {
+/*     "virtuals": {
+        "statusForCollection": "PENDING", */
 }
 
-function createHTML(date, time) {
+
+
+function createHTML(datetime) {
     let mainArticle = document.querySelectorAll('main[role="main"] > article');
 
     let scheduledMessageDiv = document.createElement('div');
@@ -70,7 +93,7 @@ function createHTML(date, time) {
     let scheduledMessage = document.createElement('span');
     scheduledMessage.className = "scheduledMessage";
 
-    scheduledMessage.innerText = `Scheduled to be published at ${date} at ${time}`;
+    scheduledMessage.innerText = `Scheduled to be published at ${datetime[0]} at ${datetime[1]}`;
 
     scheduledMessageDiv.appendChild(scheduledMessage);
 
