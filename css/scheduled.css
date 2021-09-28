@@ -1,0 +1,38 @@
+.scheduledMessage {
+    border-radius: 8px;
+    border-color: black;
+    border: solid 1px;
+    
+    padding: 0px 16px;
+    background: rgba(255, 255, 255, .97);
+    margin: auto;
+    color: rgba(0, 0, 0, .54);
+    text-align: center;
+    position: absolute;
+
+    font-size:20px;  
+}
+
+
+.scheduledMessageDiv {
+    margin: auto;   
+    width: 50%;
+}
+
+.unused {
+    color: black;
+    background: rgba(255, 255, 255, .97);
+    line-height: 28px;
+    text-align: center;
+ 
+    left: 50%;
+}
+
+.doesntwork {
+    border:color;
+}
+
+.experiment {
+    margin-right: 8px;
+    display: inline-block;
+}
