@@ -23,16 +23,12 @@ function getData() {
     }
 }
 
-// let first wait for the page to fully load
-/**
- * TODO: wachttijd is niet nodig, gewoon wachten op ful page load
- */
 window.addEventListener('load', (event) => {
-    console.log("waiting for page to fully load");
-    //setTimeout(checkSchedule(), 500);
+
     checkSchedule();
-    getReviewStatus(data);
 });
+
+
 
 function checkSchedule() {
     if (data = getData()) {
@@ -52,18 +48,6 @@ function getDateTimeSchedule(datetime) {
 
     return [publishDate, publishTime];
 }
-
-function getReviewStatus(data) {
-    /*     "virtuals": {
-            "statusForCollection": "PENDING", */
-    let status = data.value.virtuals.statusForCollection;
-    console.log(status);
-    // PENDING = wacht op publicatiedatum;
-    // bestaat niet als hij niet gescheduled is
-    // en dan bestaat scheduledPublishAt ook niet
-}
-
-
 
 function createHTML(datetime) {
     let mainArticle = document.querySelectorAll('main[role="main"] > article');
