@@ -8,26 +8,15 @@
         "48": "logo/logo-48.png",
         "128": "logo/logo-128.png"
     },
-    // TODO: create a link to other extension
-    // TODO: add CSS
-    "options_page": "settings/settings.html",
     "action": {
-        "default_title": "Medium Scheduled publications",
+        "default_title": "Medium Scheduled Stories",
         "default_popup": "popup/popup.html"
     },
     "permissions": [],
-    "host_permissions": [
-        "https://*.medium.com/*",
-        "https://medium.com/*"
-    ],
-    "background": {
-        "service_worker": "service-worker.js"
-    },
     "content_scripts": [{
-        "js": ["foreground.js"],
+        "js": ["src/scheduled-post.js"],
         "matches": [
-            "https://*.medium.com/*",
-            "https://medium.com/*"
+            "*://*.medium.com/p/*"
         ],
         "css": [
             "css/scheduled.css"
