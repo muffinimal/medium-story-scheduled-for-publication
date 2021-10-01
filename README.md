@@ -4,7 +4,7 @@ A chrome extension that alerts the user whether a story is scheduled for publica
 ## Features
 - If a story is scheduled (either in a publication or by yourself), it is shown when it is scheduled on the Edit-page
 
-## Know issues
+## Known issues
 - Sometimes the title-area of the story shifts down a bit. A simple resize of the window will fix this.
 ## Version history
 - 1.0 Launch!
