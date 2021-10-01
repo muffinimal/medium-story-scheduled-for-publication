@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Medium Scheduled Stories",
     "description": "Shows whether your story is scheduled for publication",
-    "version": "0.1",
+    "version": "1.0",
     "icons": {
         "16": "logo/logo-16.png",
         "48": "logo/logo-48.png",
