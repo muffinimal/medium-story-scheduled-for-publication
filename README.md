@@ -11,6 +11,6 @@ A chrome extension that alerts the user whether a story is scheduled for publica
 
 ### Contact
 
-Medium: https://muffinimal.medium.com/
-Github: https://github.com/muffinimal/medium-story-scheduled-for-publication
-Twitter: @arousedbywords
+- Medium: https://muffinimal.medium.com/
+- Github: https://github.com/muffinimal/medium-story-scheduled-for-publication
+- Twitter: @arousedbywords
