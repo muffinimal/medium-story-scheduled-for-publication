@@ -7,7 +7,7 @@ A chrome extension that alerts the user whether a story is scheduled for publica
 ## Known issues
 - Sometimes the title-area of the story shifts down a bit. A simple resize of the window will fix this.
 ## Version history
-- 1.0 Launch!
+- 1.0 Launch! (https://medium.com/@muffinimal/scheduled-for-publication-chrome-extension-9a6b5d263b98)
 
 ### Contact
 
